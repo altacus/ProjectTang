@@ -1,0 +1,6 @@
+$tf
+bin
+obj
+Fakes
+*.ncrunch*
+.vs
