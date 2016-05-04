@@ -65,12 +65,12 @@
             /* Check the length of string.  If the length is greater than 0 then
                perform actions within brackets 
                Hint - this condition SHOULD change for 2nd part of the assignment */
-            if (s.Length > 0)
+            if (s.Length > 1)
             {
                 /* Declare a string variable named firstDigit.  
                    Set firstDigit to value of variable's s first digit 
                    Hint - this SHOULD change for 2nd part of the assignment */
-                string firstDigit = s[0].ToString();
+                string firstDigit = s[1].ToString();
                 /* use a system function to convert the string to an integer variable 
                     Hint - this SHOULD NOT change for 2nd part of the assignment */
                 result = int.Parse(firstDigit);
