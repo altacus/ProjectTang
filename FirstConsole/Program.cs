@@ -3,81 +3,81 @@
     class Program
     {
         /// <summary>
-        /// This is a simple program.  When you run it, it'll display a message asking to 
-        /// input a sequence of numbers.  After inputing numbers and hitting enter,
-        /// it'll take what you entered and store it in a string variable called typedText.
-        /// It'll then pass this string variable into a method called ParseString.
+        /// In the previous program, the program took in a number that user typed in.
+        /// It then returned a particular digit from that number, first being the first digit, 
+        /// and then you updated it to be the 2nd digit.
         /// 
-        /// Currently, the parse string will return the first digit of what you input
-        /// or it'll return -1 if you entered nothing.
+        /// We are going to update the program to have the digit that is parsed/returned be determined
+        /// by the user before they enter the number.
         /// 
-        /// Assignment - Run this program with the following input.  Email me the results of each input. 
-        /// If something odd happens, tell me why you think it happened.
-        ///     1. 1
-        ///     2. (just press enter with no text)
-        ///     3. 0
-        ///     4. 45
-        ///     5. AbC
-        ///     6. -21
-        ///     
-        /// Assignment - Currently, the method ParseString will return the first character of the 
-        ///     input text if it exists.  Change this method to examine the 2nd digit it exists.
-        ///     if only 1 digit exists, return -1.
-        ///     After you have this working, document the results of the above input with 
-        ///     this 2nd version.
+        /// Desired program description
+        /// The following program will ask the user to enter 2 numbers.  The first number will determine 
+        /// the digit to return.  The 2nd number will be the number whose digit is returned.
+        /// 
+        /// Desired output example
+        ///    first number entered:    1
+        ///    second number entered:   12546
+        ///    answer :                 1
+        ///    
+        ///    first number entered:    3
+        ///    second number entered:   12546
+        ///    answer :                 5
+        ///    
+        /// I have updated to program to read the 2 inputs and passed them to the ParseString method.
+        /// If you run the program as is, despite what you enter in as a first number, the result
+        /// will always return the 2nd digit. Update the program so it has the desired output above.
+        /// 
+        /// The ParseString Method is mostly the same as before.  
+        /// The only "true" changes is the addtional parameter.
+        /// 
+        /// Hint: Do not change anything in the Main method
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            /* Display message to user */
-            System.Console.WriteLine("Please enter a number");
-            /* Declare variable of type string named typedText */
-            string typedText;
-            /* Set variable, typedText to what user inputed */
-            typedText = System.Console.ReadLine();
+            // I am setting a string to null.  Why?
+            string digitToParse = null;
 
-            /* declare integer variable named result */
-            int result;
-            /* Pass the variable typedText into the method ParseString and set
-               the result of the method call to the variable named result */
-            result = ParseString(typedText);
+            // Please notice the nifty while loop
+            while (digitToParse != "")
+            {
+                System.Console.WriteLine("Press enter a digit that you want to parse");
+                System.Console.WriteLine("Press enter to exit");
+                digitToParse = System.Console.ReadLine();
 
-            /* Display the result of the method call */
-            System.Console.WriteLine("After parsing, we get the answer {0}", result);
-
-            // Code to pause the console to so you can read result
-            System.Console.WriteLine("Press enter to exit");
-            System.Console.ReadLine();
+                // This kind of looks the the while statement... right?
+                if (digitToParse != "")
+                {
+                    /* Where did we see this int.Parse thing before.  What is different about this? */
+                    int parsedDigit = int.Parse(digitToParse);
+                    System.Console.WriteLine("Please enter a number to parse the digit from");
+                    string typedText = System.Console.ReadLine();
+                    int result = ParseString(typedText, parsedDigit);
+                    System.Console.WriteLine("After parsing, we get the answer {0}", result);
+                }
+            }
         }
 
-
         /// <summary>
-        /// for the 2nd part of the assigment, you only need to change the code in here.
+        /// Note the additional parameter.  Use the parameter to get the desired output.
+        /// 
+        /// note the code below is logically equivalent to the code before.  I just condensed 
+        /// some of the statements.
         /// </summary>
         /// <param name="s"></param>
+        /// <param name="digitToParse"></param>
         /// <returns></returns>
-        static int ParseString(string s)
+        static int ParseString(string s, int digitToParse)
         {
-            /* declare an integer variable named result and set the value to -1 
-                Hint - this SHOULD NOT change for 2nd part of the assignment */
             int result = -1;
 
-            /* Check the length of string.  If the length is greater than 0 then
-               perform actions within brackets 
-               Hint - this condition SHOULD change for 2nd part of the assignment */
+            // hint, change something in the next line
             if (s.Length > 1)
             {
-                /* Declare a string variable named firstDigit.  
-                   Set firstDigit to value of variable's s first digit 
-                   Hint - this SHOULD change for 2nd part of the assignment */
-                string firstDigit = s[1].ToString();
-                /* use a system function to convert the string to an integer variable 
-                    Hint - this SHOULD NOT change for 2nd part of the assignment */
-                result = int.Parse(firstDigit);
+                // hint, change something in the next line
+                result = int.Parse(s[1].ToString());
             }
 
-            /* return the result 
-                Hint - this SHOULD NOT change for 2nd part of the assignment */
             return result;
         }
     }
