@@ -72,10 +72,10 @@
             int result = -1;
 
             // hint, change something in the next line
-            if (s.Length > 1)
+            if (s.Length > digitToParse-1)
             {
                 // hint, change something in the next line
-                result = int.Parse(s[1].ToString());
+                result = int.Parse (s[digitToParse-1].ToString());
             }
 
             return result;
